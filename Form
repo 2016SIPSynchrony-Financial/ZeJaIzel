@@ -1,0 +1,36 @@
+<form>
+<div class="file-field input-field">
+      <div class="btn">
+        <span>Picture of Clothing:</span><br>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <br>
+      </div><br>
+	  <input type="radio" name="gender" value="donate" checked> For Donation<br>
+  <input type="radio" name="gender" value="rent"> For Rent<br>
+<br>
+  Type: 
+  (pants, shirt, skirt, dress etc.)<br>
+  <input type="text" name="type"><br>
+  Size:<br>
+  <input type="text" name="size"><br>
+  Color:<br>
+  <input type="text" name="color"><br>
+  Length and Width:<br>
+  <input type="text" name="lw"><br>
+  Waist:<br>
+  <input type="text" name="waist"><br>
+  Fabric:<br>
+  <input type="text" name="fabric"><br>
+  <br>
+  For :<br>
+  
+  <input type="radio" name="gender" value="male" checked> Male<br>
+  <input type="radio" name="gender" value="female"> Female<br>
+  <input type="radio" name="gender" value="children"> Children<br>
+  <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right"></i>
+  </button>
+
+  
