@@ -15,7 +15,7 @@
                 var pass_atmpt = document.getElementById("pss").value;
             
                 function runQuery() {
-                    var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1zaItX9TOukbxorQH7BJbF6b3-FR72ZgfqwqKSwnrxLw/edit#gid=0');
+                    var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1fO4kpptrhRl0uU8IhKfYgzX4Y8PZvTN_6DVdFJTqSTU/edit?usp=sharing');
                     query.setQuery('select A,B,C,D,E,F where A matches ' + '"' + user_atmpt + '"');
                     var data_string =  query.send(handleQueryResponse);
                 };
