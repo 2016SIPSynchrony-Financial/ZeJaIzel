@@ -11,6 +11,8 @@ nav .brand-logo {
   color: #444;
 }
 
+
+
 p {
   line-height: 2rem;
 }
@@ -54,4 +56,56 @@ p {
 
 footer.page-footer {
   margin: 0;
+}
+
+
+p {
+  text-indent: 10px;
+  text-align:left;
+  text-align: justify;
+  font-family: "Times New Roman", Times, serif;
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
+h5{
+	font-weight: bold;
+	text-align: left;
+	padding-top:50px;
+	padding-left: 80px
+}
+
+h1{
+	font-weight: bold;
+	text-align: center;
+	padding-top:50px;
+	padding-right: 50px;
+	padding-left: 50px;
+	padding-bottom: 50px;
+	font-family: "Times New Roman", Times, serif;
+}
+
+
+li {
+  text-indent: 10px;
+  text-align:left;
+  text-align: justify;
+  padding: 10px;
+  font-family: "Times New Roman", Times, serif;
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
+h6{
+	font-weight: bold;
+	text-align: left;
+	text-indent: 10px;
+}
+
+image {
+	text-align: center; 
+}
+
+div {
+	text-align: center;
 }
