@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Login Form with Materializecss</title>
+    
+    
+    
+    
+    
+    
+    
+    
+  </head>
+
+  <body>
+
+    <html>
+
+<head>
+
+ <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script type="text/javascript"> 
+            google.load('visualization', '1',
+                {'packages':['corechart', 'table']}
+                ); 
+        </script>
+        <script type="text/javascript">
+            function authenticate(){
+                //fetch data from input
+                var user_atmpt = document.getElementById("usr").value;
+                var pass_atmpt = document.getElementById("pss").value;
+            
+                function runQuery() {
+                    var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1fO4kpptrhRl0uU8IhKfYgzX4Y8PZvTN_6DVdFJTqSTU/edit?usp=sharing');
+                    query.setQuery('select A,B,C,D,E,F where A matches ' + '"' + user_atmpt + '"');
+                    var data_string =  query.send(handleQueryResponse);
+                };
+                // A callback function that runs when data source responds
+                // Take an object of type QueryResponse
+                function handleQueryResponse(response){
+                    if (response.isError()) {
+                        window.alert("Error accessing the database.")
+                    }
+                    else {                   
+                        data = response.getDataTable().toJSON();
+                        var header = document.getElementById("error_message");
+                        var userinfo = document.getElementById("user_info");
+                        var obj = JSON.parse(data);
+                        if (obj.rows.length ==0) { //because google api does not seem to throwing errors as expected :/
+                            header.innerHTML = "User does not exist";
+                        }
+                        else {
+                            var user = obj.rows[0].c[0].v;
+                            var password = obj.rows[0].c[1].v;
+                
+                            if (user.match(user_atmpt) && password.match(pass_atmpt)) {
+                                
+								 window.location.href = "get.html"
+								
+								//header.innerHTML = 'User authenticated!';
+                        	//	userinfo.innerHTML = "Name: " + obj.rows[0].c[2].v + " " + obj.rows[0].c[3].v + 
+                        		//					 "<br />Phone: " + obj.rows[0].c[4].v + 
+                        			//				 "<br />Email: " + obj.rows[0].c[5].v;
+                       		}
+                            else {
+                               header.innerHTML = "Username/Password is incorrect. Please try again.";
+                            }; 
+                        };
+                    };
+                }
+                runQuery();
+   
+            }
+            
+        </script>
+
+
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    body {
+      background: #fff;
+    }
+
+    .input-field input[type=date]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=email]:focus + label,
+    .input-field input[type=password]:focus + label {
+      color: #e91e63;
+    }
+
+    .input-field input[type=date]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=email]:focus,
+    .input-field input[type=password]:focus {
+      border-bottom: 2px solid #e91e63;
+      box-shadow: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="section"></div>
+  <main>
+    <center>
+
+      <h5 class="indigo-text">Please, login into your account</h5>
+      <div class="section"></div>
+  <div id="error_message" style="color: red; font-style: bold; float: left;"></div><br />
+  
+      <div class="container">
+        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+		  <h4>LOGIN</h4>
+    <div id="error_message" style="color: red; font-style: bold; float: left;"></div><br />
+    <table>
+		<tr>
+			<td>Username:</td>
+			<td><input type="text" id="usr"></td>
+		</tr>	
+		<tr>
+			<td>Password:</td>
+			<td><input type="password" id="pss"></td>
+		</tr>
+	</table>
+    <button onclick="authenticate()">Login</button>
+    <br/>
+	<div id="user_info" style="font-style: bold;"></div>
+    
+        <!--   <form class="col s12" method="post">
+            <div class='row'>
+              <div class='col s12'>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='text' name='user' id='usr' />
+                <label for='user'>Enter your username</label>
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input class='validate' type='password' name='password' id='pss' />
+                <label for='password'>Enter your password</label>
+              </div>
+              <label style='float: right;'>
+								<a class='pink-text' href='#!'><b>Forgot Password?</b></a>
+							</label>
+            </div>
+
+            <br />
+            <center>
+              <div class='row'>
+                <button onclick="authenticate()" name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</button>
+              </div>
+            </center>
+          </form>
+         --></div>
+      </div>
+      <a href="#!">Create account</a>
+    </center>
+
+    <div class="section"></div>
+    <div class="section"></div>
+  </main>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+ <!--  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+ --></body>
+
+</html>
+    
+    
+    
+    
+    
+  </body>
+</html>
